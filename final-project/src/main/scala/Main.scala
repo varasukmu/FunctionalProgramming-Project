@@ -55,7 +55,8 @@ def executePipeline(mode: String): Either[String, ProcessData.AnalysisResult] =
   val districtMap = LocationMapper.loadDistrictMapping("districts.csv")
   
   for {
-    data <- DataExtractor.extractAccidentData("Dataset.csv")
+    // data <- DataExtractor.extractAccidentData("Dataset.csv")
+    data <- DataExtractor.extractAccidentData("Dataset-Mockup-byGemini.csv")
     dataWithCodes = if (mode == "parallel") then transformDataParallel(data, provinceMap, districtMap) 
                     else transformData(data, provinceMap, districtMap)
     _ <- exportToCsv(dataWithCodes, "newDataset.csv")
