@@ -1,4 +1,3 @@
-// Common case classes used across the application
 object Models {
   case class Location(district: String, province: String)
   case class AccidentRecord(

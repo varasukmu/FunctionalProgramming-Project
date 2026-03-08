@@ -1,35 +1,20 @@
 import scala.io.Source
-import scala.collection.mutable.Map
 import scala.util.Using
 
 object LocationMapper {
-  def loadProvinceMapping(fileName: String): Map[String, String] =
-    val mapping = Map[String, String]()
+  private def loadMapping(fileName: String, minCols: Int, keyIdx: Int, valIdx: Int): Map[String, String] =
     Using(Source.fromFile(fileName, "UTF-8")) { source =>
-      val lines = source.getLines().drop(1) // ข้าม header
-      lines.foreach { line =>
-        val cols = line.split(",").map(_.trim)
-        if (cols.length >= 4) {
-          val provinceName = cols(2).replaceAll("\"", "") // PROVINCE_THAI
-          val code = cols(1).replaceAll("\"", "") // CODE
-          mapping(provinceName) = code
-        }
-      }
-    }
-    mapping
+      source.getLines()
+        .drop(1)
+        .flatMap { line =>
+          val cols = line.split(",").map(_.trim.replaceAll("\"", ""))
+          if (cols.length >= minCols) Some(cols(keyIdx) -> cols(valIdx)) else None
+        }.toMap
+    }.getOrElse(Map.empty)
+
+  def loadProvinceMapping(fileName: String): Map[String, String] =
+    loadMapping(fileName, 4, 2, 1) // Province Name -> Code
 
   def loadDistrictMapping(fileName: String): Map[String, String] =
-    val mapping = Map[String, String]()
-    Using(Source.fromFile(fileName, "UTF-8")) { source =>
-      val lines = source.getLines().drop(1) // ข้าม header
-      lines.foreach { line =>
-        val cols = line.split(",").map(_.trim)
-        if (cols.length >= 6) {
-          val districtName = cols(4).replaceAll("\"", "") // DISTRICT_THAI
-          val code = cols(3).replaceAll("\"", "") // DISTRICT_CODE
-          mapping(districtName) = code
-        }
-      }
-    }
-    mapping
+    loadMapping(fileName, 6, 4, 3) // District Name -> Code
 }

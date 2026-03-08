@@ -1,68 +1,47 @@
-import scala.io.Source
 import scala.util.{Using, Try}
-import scala.collection.mutable.Map
-
-// Import functions from separate files
-import DataExtractor.{extractAccidentData}
-import LocationMapper.{loadProvinceMapping, loadDistrictMapping}
-import LocationCodeCalculator.{getLocationCode}
-import Models.{Location, AccidentRecord, LocationWithCode, AccidentRecordWithCode}
+import java.io.{PrintWriter, File}
+import Models._
 
 @main def runAnalysis(): Unit =
-  val fileName = "Dataset.csv" // กำหนดชื่อไฟล์ไ
-  val outputFile = "newDataset.csv"
+  val provinceMap = LocationMapper.loadProvinceMapping("provinces.csv")
+  val districtMap = LocationMapper.loadDistrictMapping("districts.csv")
 
-  // โหลด mapping สำหรับรหัสไปรษณีย์
-  val provinceMap = loadProvinceMapping("provinces.csv")
-  val districtMap = loadDistrictMapping("districts.csv")
+  val result = for {
+    data <- DataExtractor.extractAccidentData("Dataset.csv")
+    dataWithCodes = transformData(data, provinceMap, districtMap)
+    _ <- exportToCsv(dataWithCodes, "newDataset.csv")
+    analysis <- ProcessData.analyze(dataWithCodes).toRight("Analysis failed")
+  } yield analysis
 
-  extractAccidentData(fileName) match
-    case Right(data) =>
-      println(s"Success! Found ${data.size} clean records.")
+  result match
+    case Right(report) => DataReporter.printReport(report)
+    case Left(err)     => println(s"Error: $err")
 
-      // แปลงข้อมูลและเพิ่มรหัสไปรษณีย์
-      val dataWithCodes = data.map { rec =>
-        val homeCode = getLocationCode(rec.homeLoc, provinceMap, districtMap)
-        val incidentCode = getLocationCode(rec.incidentLoc, provinceMap, districtMap)
-        val distanceLevel = calculateDistanceLevel(rec.homeLoc, rec.incidentLoc)
+def transformData(data: List[AccidentRecord], pMap: Map[String, String], dMap: Map[String, String]): List[AccidentRecordWithCode] =
+  data.map { rec =>
+    val homeCode = LocationCodeCalculator.getLocationCode(rec.homeLoc, pMap, dMap)
+    val incCode = LocationCodeCalculator.getLocationCode(rec.incidentLoc, pMap, dMap)
+    val distLvl = calculateDistanceLevel(rec.homeLoc, rec.incidentLoc)
+    
+    AccidentRecordWithCode(
+      rec.age, rec.sex, 
+      LocationWithCode(rec.homeLoc.district, rec.homeLoc.province, homeCode),
+      rec.deadDate,
+      LocationWithCode(rec.incidentLoc.district, rec.incidentLoc.province, incCode),
+      distLvl
+    )
+  }
 
-        Models.AccidentRecordWithCode(
-          rec.age,
-          rec.sex,
-          Models.LocationWithCode(rec.homeLoc.district, rec.homeLoc.province, homeCode),
-          rec.deadDate,
-          LocationWithCode(rec.incidentLoc.district, rec.incidentLoc.province, incidentCode),
-          distanceLevel
-        )
-      }
+def exportToCsv(data: List[AccidentRecordWithCode], path: String): Either[String, Unit] =
+  Using(new PrintWriter(new File(path))) { writer =>
+    writer.println("Age,Sex,Home_Code,Incident_Code,Distance_Level")
+    data.foreach { r =>
+      writer.println(s"${r.age},${r.sex},${r.homeLoc.code},${r.incidentLoc.code},${r.distanceLevel}")
+    }
+  }.toEither.left.map(_.getMessage)
 
-      // Write to CSV file
-      val writer = java.io.FileWriter(outputFile)
-      try {
-        // Write CSV header
-        writer.write("Age,Sex,Home_District,Home_Province,Home_Code,Dead_Date,Incident_District,Incident_Province,Incident_Code,Distance_Level\n")
-        
-        // Write each record as CSV row
-        dataWithCodes.foreach { (rec: Models.AccidentRecordWithCode) =>
-          val row = s"${rec.age},${rec.sex},${rec.homeLoc.district},${rec.homeLoc.province},${rec.homeLoc.code},${rec.deadDate},${rec.incidentLoc.district},${rec.incidentLoc.province},${rec.incidentLoc.code},${rec.distanceLevel}\n"
-          writer.write(row)
-        }
-
-        println(s"Cleaned data with postal codes exported to: $outputFile")
-        println(s"Total records: ${dataWithCodes.size}")
-
-      } finally {
-        writer.close()
-      }
-
-    case Left(error) =>
-      System.err.println(s"Error: $error")
-
-def calculateDistanceLevel(homeLoc: Location, incidentLoc: Location): Int =
-  val sameProvince = homeLoc.province == incidentLoc.province
-  val sameDistrict = homeLoc.district == incidentLoc.district
-
-  if (sameProvince && sameDistrict) 0
-  else if (sameProvince && !sameDistrict) 1
-  else if (!sameProvince && !sameDistrict) 2
-  else -1
+def calculateDistanceLevel(home: Location, incident: Location): Int =
+  (home.province == incident.province, home.district == incident.district) match
+    case (true, true)   => 0
+    case (true, false)  => 1
+    case (false, _)     => 2

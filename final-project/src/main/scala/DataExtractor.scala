@@ -1,7 +1,6 @@
 import scala.io.Source
 import scala.util.{Using, Try}
 
-// Import models
 import Models.{Location, AccidentRecord}
 
 object DataExtractor {
@@ -15,7 +14,6 @@ object DataExtractor {
           val header = headerLine.split(",").map(_.trim).toList
           val idx = (name: String) => header.indexOf(name)
 
-          // ดึงตำแหน่ง column
           val colsMap = Map(
             "age" -> idx("Age"),
             "sex" -> idx("Sex"),
@@ -29,11 +27,9 @@ object DataExtractor {
           dataLines.flatMap { line =>
             val c = line.split(",", -1).map(_.trim)
 
-            // helper เพื่อดึงค่าและเช็คว่างแบบ Option
             def get(key: String): Option[String] =
               colsMap.get(key).filter(i => i >= 0 && i < c.length && c(i).nonEmpty).map(c(_))
 
-            // Functional Composition: ถ้าได้ครบทุกค่าถึงจะสร้าง AccidentRecord
             for {
               age  <- get("age")
               sex  <- get("sex")
