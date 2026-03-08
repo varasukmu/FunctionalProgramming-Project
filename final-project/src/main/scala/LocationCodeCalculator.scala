@@ -1,7 +1,6 @@
 import Models.Location
 
 object LocationCodeCalculator {
-  // เปลี่ยนจาก mutable.Map เป็น Map (Immutable)
   def getLocationCode(
     location: Location, 
     provinceMap: Map[String, String], 
