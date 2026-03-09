@@ -148,7 +148,8 @@ object ProcessData:
           (p, l, m)
         } else {
             val p = data.groupBy(_.incidentLoc.province).view.mapValues(_.toList).toSeq.sortBy(-_._2.size).take(ShowRank).toList
-            val l = data.groupBy(r => (r.incidentLoc.province, r.incidentLoc.district)).view.mapValues(_.toList).toSeq.sortBy(-_._2.size).take(ShowRank).toList
+            val l = data.groupBy(r => 
+              (r.incidentLoc.province, r.incidentLoc.district)).view.mapValues(_.toList).toSeq.sortBy(-_._2.size).take(ShowRank).toList
             
             val m = dataWithDates.groupBy(_.month).view.mapValues(_.size).toSeq.sortBy(-_._2).take(ShowRank).toList
             (p, l, m)

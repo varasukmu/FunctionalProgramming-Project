@@ -53,8 +53,8 @@ def executePipeline(mode: String): Either[String, ProcessData.AnalysisResult] =
 	for {
 		provinceMap <- LocationMapper.loadProvinceMapping("provinces.csv")
 		districtMap <- LocationMapper.loadDistrictMapping("districts.csv")
-		data        <- DataExtractor.extractAccidentData("Dataset-Mockup-byGemini.csv")
 		// data        <- DataExtractor.extractAccidentData("Dataset.csv")
+		// data        <- DataExtractor.extractAccidentData("Dataset-Mockup-byGemini.csv")
 
 		dataWithCodes =
 			if mode == "parallel" 

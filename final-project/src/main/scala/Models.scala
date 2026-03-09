@@ -6,7 +6,8 @@ case class Location(
 
 case class LocationWithCode(
     district: String,
-    province: String, code: String)
+    province: String, 
+    code: String)
 
 case class AccidentRecord(
     age: String,

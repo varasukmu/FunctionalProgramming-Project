@@ -50,3 +50,346 @@ java.util.concurrent.TimeoutException: Future timed out after [60 seconds]
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
 	at java.lang.Thread.run(Thread.java:840)
 [0m
+2026.03.09 14:25:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/DataReport.scala. Using presentation compiler with project's scala-library version: 3.3.7[0m
+2026.03.09 14:25:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/DataReport.scala. Using presentation compiler with project's scala-library version: 3.3.7[0m
+2026.03.09 14:25:43 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/DataReport.scala[0m
+2026.03.09 14:31:43 ERROR Failed to resolve Scala 3 presentation compiler for 3.3.7
+java.util.concurrent.TimeoutException: Future timed out after [60 seconds]
+	at scala.concurrent.Future$.timeoutError(Future.scala:581)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryAwait0(Promise.scala:258)
+	at scala.concurrent.impl.Promise$DefaultPromise.result(Promise.scala:271)
+	at scala.concurrent.Await$.$anonfun$result$1(package.scala:208)
+	at scala.concurrent.BlockContext$DefaultBlockContext$.blockOn(BlockContext.scala:62)
+	at scala.concurrent.Await$.result(package.scala:125)
+	at scala.meta.internal.metals.MtagsResolver$Default.fetch$1(MtagsResolver.scala:174)
+	at scala.meta.internal.metals.MtagsResolver$Default.fetch$1(MtagsResolver.scala:185)
+	at scala.meta.internal.metals.MtagsResolver$Default.fetch$1(MtagsResolver.scala:185)
+	at scala.meta.internal.metals.MtagsResolver$Default.fetch$1(MtagsResolver.scala:185)
+	at scala.meta.internal.metals.MtagsResolver$Default.fetch$1(MtagsResolver.scala:185)
+	at scala.meta.internal.metals.MtagsResolver$Default.fetch$1(MtagsResolver.scala:185)
+	at scala.meta.internal.metals.MtagsResolver$Default.$anonfun$resolve$8(MtagsResolver.scala:231)
+	at java.util.concurrent.ConcurrentHashMap.compute(ConcurrentHashMap.java:1940)
+	at scala.meta.internal.metals.MtagsResolver$Default.resolve(MtagsResolver.scala:226)
+	at scala.meta.internal.metals.MtagsResolver$Default.resolve(MtagsResolver.scala:127)
+	at scala.meta.internal.metals.CompilerConfiguration$StandaloneCompiler.<init>(CompilerConfiguration.scala:56)
+	at scala.meta.internal.metals.Compilers.$anonfun$fallbackCompiler$1(Compilers.scala:195)
+	at com.google.common.cache.LocalCache$LoadingValueReference.compute(LocalCache.java:3590)
+	at com.google.common.cache.LocalCache$Segment.compute(LocalCache.java:2263)
+	at com.google.common.cache.LocalCache.compute(LocalCache.java:4230)
+	at scala.meta.internal.metals.Compilers.fallbackCompiler(Compilers.scala:181)
+	at scala.meta.internal.metals.Compilers.fromBuildTarget$1(Compilers.scala:1343)
+	at scala.meta.internal.metals.Compilers.loadCompiler(Compilers.scala:1360)
+	at scala.meta.internal.metals.Compilers.semanticdbTextDocument(Compilers.scala:1761)
+	at scala.meta.internal.metals.InteractiveSemanticdbs.$anonfun$compile$1(InteractiveSemanticdbs.scala:143)
+	at scala.util.Try$.apply(Try.scala:217)
+	at scala.meta.internal.metals.InteractiveSemanticdbs.compile(InteractiveSemanticdbs.scala:141)
+	at scala.meta.internal.metals.InteractiveSemanticdbs.$anonfun$textDocument$3(InteractiveSemanticdbs.scala:103)
+	at java.util.HashMap.compute(HashMap.java:1316)
+	at java.util.Collections$SynchronizedMap.compute(Collections.java:2771)
+	at scala.meta.internal.metals.InteractiveSemanticdbs.textDocument(InteractiveSemanticdbs.scala:93)
+	at scala.meta.internal.metals.InteractiveSemanticdbs.textDocument(InteractiveSemanticdbs.scala:54)
+	at scala.meta.internal.metals.MetalsLspService.$anonfun$onChange$4(MetalsLspService.scala:942)
+	at scala.concurrent.Future$.$anonfun$apply$1(Future.scala:691)
+	at scala.concurrent.impl.Promise$Transformation.run(Promise.scala:500)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.lang.Thread.run(Thread.java:840)
+[0m
+2026.03.09 16:29:17 INFO  Started: Metals version 1.6.6 in folders '/home/jxevara/FunctionalProject' for client Visual Studio Code 1.109.5.
+2026.03.09 16:29:17 INFO  Memory monitor started
+2026.03.09 16:29:21 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.
+2026.03.09 16:29:21 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:36 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:36 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:36 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:39 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:39 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:40 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 16:29:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:41 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 16:29:41 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:41 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:44 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 16:29:44 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:44 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:29:45 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:51:34 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:51:34 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:51:36 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:51:36 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:51:37 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:51:37 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:51:38 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:51:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:13 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:15 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:26 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:27 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 16:52:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:28 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 16:52:28 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 16:52:28 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:11:54 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:11:54 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:43 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 17:12:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:44 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:45 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 17:12:45 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 17:12:45 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:30 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:24:30 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:30 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:30 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:36 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:36 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:36 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:37 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:37 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:38 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:24:38 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:38 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:38 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:39 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:39 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:40 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:24:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:24:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:28:37 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:28:37 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:24 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Mar 09, 2026 8:29:24 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 166
+Mar 09, 2026 8:29:25 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 167
+Mar 09, 2026 8:29:25 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 169
+Mar 09, 2026 8:29:25 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 171
+2026.03.09 20:29:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:51 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:29:51 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:51 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Mar 09, 2026 8:29:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 183
+2026.03.09 20:29:52 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Mar 09, 2026 8:29:52 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 181
+2026.03.09 20:29:55 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:29:55 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:55 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:29:55 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:30 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:37 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:37 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:38 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:30:38 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:38 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:39 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:39 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:40 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:41 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:30:41 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:30:41 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:14 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:14 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:15 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:33:15 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:15 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:16 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:16 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:16 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:17 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:17 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:17 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:17 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:33:17 INFO  Created report: Optional[file:///home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala]
+2026.03.09 20:33:17 INFO  empty definition using pc, found symbol in pc:  (full report at: "/home/jxevara/FunctionalProject/.metals/.reports/metals-full/2026-03-09/r_empty-definition_20-33-17-770.md")
+2026.03.09 20:33:18 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:33:18 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:18 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:18 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:20 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:20 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:23 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:23 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:25 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:34:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:26 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:26 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:34:27 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:34:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:35:54 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:05 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:36:05 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:05 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:05 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:05 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:05 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:08 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:10 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:10 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:10 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:12 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:12 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:12 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:13 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:13 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:15 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:15 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:16 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:18 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:59 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:36:59 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:59 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:59 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:59 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:36:59 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:37:00 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:37:04 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:37:04 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:37:05 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:37:05 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:37:07 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:37:09 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:37:09 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Mar 09, 2026 8:38:33 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 329
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Mar 09, 2026 8:38:33 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 336
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+Mar 09, 2026 8:38:33 PM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 338
+2026.03.09 20:38:33 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:34 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:34 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:38:34 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:38:35 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:29 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:33 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:41 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:39:41 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:41 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:41 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:41 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:42 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:44 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:43 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:44 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:39:44 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:44 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:44 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:44 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:45 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:46 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:39:45 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:39:46 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:24 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:26 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:40:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:26 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:25 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:26 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:26 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:26 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:26 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:27 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:40:28 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:40:28 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:41:59 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:42:01 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:42:01 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:42:03 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:42:03 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:42:03 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:42:04 WARN  no build target for: /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala
+2026.03.09 20:42:03 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:42:04 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:42:04 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:44:07 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:44:07 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:44:09 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:48:45 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:48:47 INFO  no build target found for /home/jxevara/FunctionalProject/final-project/src/main/scala/Main.scala. Using presentation compiler with project's scala-library version: 3.3.7
+2026.03.09 20:48:48 INFO  empty definition using pc, found symbol in pc:  (full report at: "/home/jxevara/FunctionalProject/.metals/.reports/metals-full/2026-03-09/r_empty-definition_20-33-17-770.md")
