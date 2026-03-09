@@ -1,11 +1,14 @@
-import Models.AccidentRecordWithCode
+import Models.{AccidentRecordWithCode, AccidentWithDate}
 import scala.util.Try
 import scala.collection.parallel.CollectionConverters._
 
 object ProcessData:
 
+  val ShowRank: Int = 3 
+
   case class AnalysisResult(
     total: Int,
+    processedRows: Int, // ---> จุดที่ 1: เพิ่มฟิลด์รับค่าจำนวนที่ประมวลผลผ่าน
     avgAge: Double,
     ageStdDev: Double,
     ageBins: Seq[(String, Int, Double)], 
@@ -13,7 +16,8 @@ object ProcessData:
     distStats: Map[Int, (Int, Double)],
     topSexAndAgeGroups: Seq[((String, String), Int, Double)],
     topProvinces: Seq[(String, List[AccidentRecordWithCode])],
-    topLocations: Seq[((String, String), List[AccidentRecordWithCode])]
+    topLocations: Seq[((String, String), List[AccidentRecordWithCode])],
+    topMonths: Seq[(Int, Int)]
   )
 
   def analyze(data: List[AccidentRecordWithCode], mode: String): Option[AnalysisResult] =
@@ -22,29 +26,58 @@ object ProcessData:
     else
       val (avgAge, stdDev, ageBins) = calculateAgeDemographics(data)
       
-      val (topProv, topLoc) = if (mode == "parallel") then
+      val dataWithDates = data.flatMap(splitDate)
+      val processedCount = dataWithDates.size // ---> จุดที่ 2: นับจำนวนข้อมูลที่มีวันที่ถูกต้อง
+      
+      val (topProv, topLoc, topM) = if (mode == "parallel") then
         val p = data.par.groupBy(_.incidentLoc.province)
                   .mapValues(_.toList).seq.toSeq
-                  .sortBy(-_._2.size).take(10).toList
+                  .sortBy(-_._2.size).take(ShowRank).toList
         val l = data.par.groupBy(r => (r.incidentLoc.province, r.incidentLoc.district))
                   .mapValues(_.toList).seq.toSeq
-                  .sortBy(-_._2.size).take(10).toList
-        (p, l)
+                  .sortBy(-_._2.size).take(ShowRank).toList
+                  
+        val m = dataWithDates.par.groupBy(_.month)
+                  .mapValues(_.size).seq.toSeq
+                  .sortBy(-_._2).take(ShowRank).toList
+        (p, l, m)
       else
-        (data.groupBy(_.incidentLoc.province).toSeq.sortBy(-_._2.size).take(10).toList,
-         data.groupBy(r => (r.incidentLoc.province, r.incidentLoc.district)).toSeq.sortBy(-_._2.size).take(10).toList)
+        val p = data.groupBy(_.incidentLoc.province).toSeq.sortBy(-_._2.size).take(ShowRank).toList
+        val l = data.groupBy(r => (r.incidentLoc.province, r.incidentLoc.district)).toSeq.sortBy(-_._2.size).take(ShowRank).toList
+        
+        val m = dataWithDates.groupBy(_.month).view.mapValues(_.size).toSeq.sortBy(-_._2).take(ShowRank).toList
+        (p, l, m)
 
       Some(AnalysisResult(
         total = total,
+        processedRows = processedCount, // ---> จุดที่ 3: ส่งค่าเข้าไปใน Result
         avgAge = avgAge,
         ageStdDev = stdDev,
         ageBins = ageBins,
         sexStats = calculateStats(data, total)(_.sex),
         distStats = calculateStats(data, total)(_.distanceLevel),
-        topSexAndAgeGroups = getTopSexAndAgeGroups(data, total, 10),
+        topSexAndAgeGroups = getTopSexAndAgeGroups(data, total, ShowRank),
         topProvinces = topProv,
-        topLocations = topLoc
+        topLocations = topLoc,
+        topMonths = topM
       ))
+
+  private def splitDate(rec: AccidentRecordWithCode): Option[AccidentWithDate] =
+    rec.deadDate.trim.split("-") match
+      case Array(year, month, day) =>
+        Try {
+          AccidentWithDate(
+            rec.age,
+            rec.sex,
+            rec.homeLoc,
+            rec.incidentLoc,
+            rec.distanceLevel,
+            day.toInt,
+            month.toInt,
+            year.toInt
+          )
+        }.toOption
+      case _ => None
 
   def calculateStats[T](data: List[AccidentRecordWithCode], total: Int)(f: AccidentRecordWithCode => T): Map[T, (Int, Double)] =
     if (total == 0) Map.empty
