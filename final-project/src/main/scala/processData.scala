@@ -8,7 +8,7 @@ object ProcessData:
 
   case class AnalysisResult(
     total: Int,
-    processedRows: Int, // ---> จุดที่ 1: เพิ่มฟิลด์รับค่าจำนวนที่ประมวลผลผ่าน
+    processedRows: Int,
     avgAge: Double,
     ageStdDev: Double,
     ageBins: Seq[(String, Int, Double)], 
@@ -26,28 +26,32 @@ object ProcessData:
     else
       val (avgAge, stdDev, ageBins) = calculateAgeDemographics(data, mode)
       
-      val dataWithDates: Seq[AccidentWithDate] = if (mode == "parallel") data.par.flatMap(splitDate).seq else data.flatMap(splitDate)
+      val dataWithDates: Seq[AccidentWithDate] = 
+        if (mode == "parallel") data.par.flatMap(splitDate).seq 
+        else data.flatMap(splitDate)
+
       val processedCount = dataWithDates.size
       
-      val (topProv, topLoc, topM) = if (mode == "parallel") then
-        val parData = data.par
-        val p = parData.groupBy(_.incidentLoc.province)
-                      .mapValues(_.toList)
-                      .seq.toSeq.sortBy(-_._2.size).take(ShowRank).toList
-        val l = parData.groupBy(r => (r.incidentLoc.province, r.incidentLoc.district))
-                      .mapValues(_.toList)
-                      .seq.toSeq.sortBy(-_._2.size).take(ShowRank).toList
-                      
-        val m = dataWithDates.par.groupBy(_.month)
-                      .mapValues(_.size).seq.toSeq
-                      .sortBy(-_._2).take(ShowRank).toList
-        (p, l, m)
-      else
-        val p = data.groupBy(_.incidentLoc.province).mapValues(_.toList).toSeq.sortBy(-_._2.size).take(ShowRank).toList
-        val l = data.groupBy(r => (r.incidentLoc.province, r.incidentLoc.district)).mapValues(_.toList).toSeq.sortBy(-_._2.size).take(ShowRank).toList
-        
-        val m = dataWithDates.groupBy(_.month).view.mapValues(_.size).toSeq.sortBy(-_._2).take(ShowRank).toList
-        (p, l, m)
+      val (topProv, topLoc, topM) = 
+        if (mode == "parallel") then
+          val parData = data.par
+          val p = parData.groupBy(_.incidentLoc.province)
+                        .mapValues(_.toList)
+                        .seq.toSeq.sortBy(-_._2.size).take(ShowRank).toList
+          val l = parData.groupBy(r => (r.incidentLoc.province, r.incidentLoc.district))
+                        .mapValues(_.toList)
+                        .seq.toSeq.sortBy(-_._2.size).take(ShowRank).toList
+                        
+          val m = dataWithDates.par.groupBy(_.month)
+                        .mapValues(_.size).seq.toSeq
+                        .sortBy(-_._2).take(ShowRank).toList
+          (p, l, m)
+        else
+          val p = data.groupBy(_.incidentLoc.province).mapValues(_.toList).toSeq.sortBy(-_._2.size).take(ShowRank).toList
+          val l = data.groupBy(r => (r.incidentLoc.province, r.incidentLoc.district)).mapValues(_.toList).toSeq.sortBy(-_._2.size).take(ShowRank).toList
+          
+          val m = dataWithDates.groupBy(_.month).view.mapValues(_.size).toSeq.sortBy(-_._2).take(ShowRank).toList
+          (p, l, m)
 
       Some(AnalysisResult(
         total = total,
@@ -81,45 +85,64 @@ object ProcessData:
       case _ => None
 
   def calculateStats[T](data: Seq[AccidentRecordWithCode], total: Int, mode: String)(f: AccidentRecordWithCode => T): Map[T, (Int, Double)] =
-    if (total == 0) Map.empty
-    else if (mode == "parallel") data.par.groupBy(f).mapValues(_.size).seq.map { case (k, count) => k -> (count, (count.toDouble / total) * 100) }.toMap
-    else data.groupBy(f).view.mapValues { list => 
-      val count = list.size
-      (count, (count.toDouble / total) * 100)
-    }.toMap
+    if (total == 0) 
+      Map.empty
+    else if (mode == "parallel") 
+      data.par.groupBy(f).mapValues(_.size).seq.map { 
+        case (k, count) => k -> (count, (count.toDouble / total) * 100) 
+      }.toMap
+    else 
+      data.groupBy(f).view.mapValues { list => 
+        val count = list.size
+        (count, (count.toDouble / total) * 100)
+      }.toMap
 
   private def calculateAgeDemographics(data: Seq[AccidentRecordWithCode], mode: String): (Double, Double, Seq[(String, Int, Double)]) =
     val validAges = data.flatMap(r => Try(r.age.toInt).toOption).filter(_ >= 0)
     val totalValid = validAges.size
-    if (totalValid == 0) (0.0, 0.0, Seq.empty)
+    if (totalValid == 0) 
+      (0.0, 0.0, Seq.empty)
     else 
       val mean = validAges.sum.toDouble / totalValid
       val stdDev = math.sqrt(validAges.map(a => math.pow(a - mean, 2)).sum / totalValid)
-      val bins = if (mode == "parallel") validAges.par.map(getAgeBinLabel).groupBy(identity).mapValues(_.size).seq.toSeq
-        .sortBy { case (label, _) => if (label == "80+") 999 else Try(label.split("-")(0).toInt).getOrElse(0) }
-        .map { case (label, count) => (label, count, (count.toDouble / totalValid) * 100) }
-      else validAges.map(getAgeBinLabel).groupBy(identity).view.mapValues(_.size).toSeq
-        .sortBy { case (label, _) => if (label == "80+") 999 else Try(label.split("-")(0).toInt).getOrElse(0) }
-        .map { case (label, count) => (label, count, (count.toDouble / totalValid) * 100) }
+      val bins = 
+        if (mode == "parallel") 
+          validAges.par.map(getAgeBinLabel).groupBy(identity).mapValues(_.size).seq.toSeq
+            .sortBy { case (label, _) => if (label == "80+") 999 else Try(label.split("-")(0).toInt).getOrElse(0) }
+            .map { case (label, count) => (label, count, (count.toDouble / totalValid) * 100) }
+      else 
+        validAges.map(getAgeBinLabel).groupBy(identity).view.mapValues(_.size).toSeq
+          .sortBy { case (label, _) => if (label == "80+") 999 else Try(label.split("-")(0).toInt).getOrElse(0) }
+          .map { case (label, count) => (label, count, (count.toDouble / totalValid) * 100) }
       (mean, stdDev, bins.toSeq)
 
   private def getTopSexAndAgeGroups(data: Seq[AccidentRecordWithCode], total: Int, limit: Int, mode: String): Seq[((String, String), Int, Double)] =
     if (total == 0) Seq.empty
     else {
-      val grouped = if (mode == "parallel") data.par.flatMap { r => 
-        Try(r.age.toInt).toOption.filter(_ >= 0).map(age => 
-          (if (r.sex.trim.isEmpty) "Unknown" else r.sex, getAgeBinLabel(age))
-        )
-      }.groupBy(identity).mapValues(_.size).seq
-      else data.flatMap { r => 
-        Try(r.age.toInt).toOption.filter(_ >= 0).map(age => 
-          (if (r.sex.trim.isEmpty) "Unknown" else r.sex, getAgeBinLabel(age))
-        )
-      }.groupBy(identity).view.mapValues(_.size)
+      val grouped = 
+        if (mode == "parallel") 
+          data.par.flatMap { r => 
+            Try(r.age.toInt).toOption.filter(_ >= 0).map(age => (
+              if (r.sex.trim.isEmpty) "Unknown" 
+              else r.sex, getAgeBinLabel(age))
+            )
+          }.groupBy(identity).mapValues(_.size).seq
+        else 
+          data.flatMap { r => 
+            Try(r.age.toInt).toOption.filter(_ >= 0).map(age => (
+              if (r.sex.trim.isEmpty) "Unknown" 
+              else r.sex, getAgeBinLabel(age))
+            )
+          }.groupBy(identity).view.mapValues(_.size)
       grouped.map { case (key, count) => (key, count, (count.toDouble / total) * 100) }
-             .toSeq.sortBy { case (_, count, _) => -count }.take(limit)
+        .toSeq.sortBy { case (_, count, _) => -count }.take(limit)
     }
 
   private def getAgeBinLabel(age: Int): String =
-    val startAge = if age >= 80 then 80 else (age / 10) * 10
-    if startAge == 80 then "80+" else s"$startAge-${startAge + 9}"
+    val startAge = 
+      if age >= 80 
+        then 80 
+        else (age / 10) * 10
+    if startAge == 80 
+      then "80+" 
+      else s"$startAge-${startAge + 9}"

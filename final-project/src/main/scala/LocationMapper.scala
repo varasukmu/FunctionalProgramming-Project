@@ -3,13 +3,7 @@ import scala.util.Using
 
 object LocationMapper {
 
-  /** Pure helper that parses the CSV content already split into lines. */
-  def parseMappingLines(
-      lines: List[String],
-      minCols: Int,
-      keyIdx: Int,
-      valIdx: Int
-  ): Map[String, String] =
+  def parseMappingLines(lines: List[String], minCols: Int, keyIdx: Int, valIdx: Int): Map[String, String] =
     lines
       .drop(1)
       .flatMap { line =>
@@ -23,17 +17,13 @@ object LocationMapper {
       src.getLines().toList
     }.toEither.left.map(e => s"File error: ${e.getMessage}")
 
-  def loadProvinceMapping(
-      fileName: String
-  ): Either[String, Map[String, String]] =
+  def loadProvinceMapping(fileName: String): Either[String, Map[String, String]] =
     readFile(fileName).map(
       parseMappingLines(_, 4, 2, 1)
-    ) // Province Name -> Code
+    )
 
-  def loadDistrictMapping(
-      fileName: String
-  ): Either[String, Map[String, String]] =
+  def loadDistrictMapping(fileName: String): Either[String, Map[String, String]] =
     readFile(fileName).map(
       parseMappingLines(_, 6, 4, 3)
-    ) // District Name -> Code
+    )
 }
