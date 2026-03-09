@@ -66,7 +66,7 @@ object DataReporter:
         val provOverallPct = (provTotal.toDouble / totalOriginalRecords) * 100
         appendLine(f"${index + 1}. จ.$prov : $provOverallPct%.2f%% ($provTotal)")
 
-        val sexStats = calculateStats(provinceRecords, provTotal)(_.sex)
+        val sexStats = calculateStats(provinceRecords, provTotal, "sequential")(_.sex)
         val sexStrings = sexStats.toSeq
           .sortBy { case (_, (count, _)) => -count }
           .map { case (sex, (count, pct)) =>
@@ -75,7 +75,7 @@ object DataReporter:
           }
         appendLine(s"\t${sexStrings.mkString(" | ")}")
 
-        val distLevelStats = calculateStats(provinceRecords, provTotal)(_.distanceLevel)
+        val distLevelStats = calculateStats(provinceRecords, provTotal, "sequential")(_.distanceLevel)
         val levelStrings = Seq(0, 1, 2).map { lvl =>
           val (count, pct) = distLevelStats.getOrElse(lvl, (0, 0.0))
           f"level $lvl : $pct%.2f%% ($count)"
@@ -94,7 +94,7 @@ object DataReporter:
         val distOverallPct = (distTotal.toDouble / totalOriginalRecords) * 100
         appendLine(f"${index + 1}. อ.$dist จ.$prov : $distOverallPct%.2f%% ($distTotal)")
 
-        val sexStats = calculateStats(districtRecords, distTotal)(_.sex)
+        val sexStats = calculateStats(districtRecords, distTotal, "sequential")(_.sex)
         val sexStrings = sexStats.toSeq
           .sortBy { case (_, (count, _)) => -count }
           .map { case (sex, (count, pct)) =>
@@ -103,7 +103,7 @@ object DataReporter:
           }
         appendLine(s"\t${sexStrings.mkString(" | ")}")
 
-        val distLevelStats = calculateStats(districtRecords, distTotal)(_.distanceLevel)
+        val distLevelStats = calculateStats(districtRecords, distTotal, "sequential")(_.distanceLevel)
         val levelStrings = Seq(0, 1, 2).map { lvl =>
           val (count, pct) = distLevelStats.getOrElse(lvl, (0, 0.0))
           f"level $lvl : $pct%.2f%% ($count)"

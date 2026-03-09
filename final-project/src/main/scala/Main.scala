@@ -76,15 +76,15 @@ def transformData(
   data: List[AccidentRecord],
   pMap: Map[String, String],
   dMap: Map[String, String]
-): List[AccidentRecordWithCode] =
+): Seq[AccidentRecordWithCode] =
   data.map(rec => buildRecord(rec, pMap, dMap))
 
 def transformDataParallel(
   data: List[AccidentRecord],
   pMap: Map[String, String],
   dMap: Map[String, String]
-): List[AccidentRecordWithCode] =
-  data.par.map(rec => buildRecord(rec, pMap, dMap)).toList
+): Seq[AccidentRecordWithCode] =
+  data.par.map(rec => buildRecord(rec, pMap, dMap)).seq
 
 def buildRecord(rec: AccidentRecord, pMap: Map[String, String], dMap: Map[String, String]): AccidentRecordWithCode =
   val homeCode = LocationCodeCalculator.getLocationCode(rec.homeLoc, pMap, dMap)
@@ -100,7 +100,7 @@ def buildRecord(rec: AccidentRecord, pMap: Map[String, String], dMap: Map[String
   )
 
 // CSV helpers -----------------------------------------------------------
-def toCsvContent(data: List[AccidentRecordWithCode]): String =
+def toCsvContent(data: Seq[AccidentRecordWithCode]): String =
   val header = "Age,Sex,Home_Code,Incident_Code,Distance_Level"
   val rows   = data.map(r => s"${r.age},${r.sex},${r.homeLoc.code},${r.incidentLoc.code},${r.distanceLevel}")
   (header +: rows).mkString("\n")
