@@ -13,6 +13,7 @@ object DataReporter:
 
     def printSummaryStats(
       total: Int,
+      processed: Int, // ---> เพิ่ม parameter รับค่า processedRows
       avgAge: Double,
       ageStdDev: Double,
       ageBins: Seq[(String, Int, Double)],
@@ -29,12 +30,18 @@ object DataReporter:
       appendLine("=" * 65)
       appendLine("\tSummary Statistics")
       appendLine("=" * 65)
+      
+      // ---> เพิ่มการแสดงผลจำนวนแถวที่นี่ <---
+      appendLine(f"Total Rows Received  : $total%,d records")
+      appendLine(f"Total Rows Processed : $processed%,d records (Valid Data)")
+      appendLine("-" * 65)
+      
       appendLine(f"\nAverage Age:\n\t$avgAge%.2f years (SD: $ageStdDev%.2f)")
       appendLine("\nAge Demographics (Bins):")
       ageBins.foreach { case (label, count, pct) =>
         appendLine(f"\t- Age $label%-5s : $pct%5.2f%% ($count records)")
       }
-      appendLine("\nSex Breakdown (Overall):")
+      appendLine("\nSex (Overall):")
       sexStats.toSeq.sortBy { case (_, (count, _)) => -count }.foreach { case (sex, (count, pct)) =>
         val label = if sex.trim.isEmpty then "Unknown" else sex
         appendLine(f"\t- $label%-9s : $pct%5.2f%% ($count records)")
@@ -47,7 +54,7 @@ object DataReporter:
 
     def printTopSexAndAgeGroups(topGroups: Seq[((String, String), Int, Double)]): Unit =
       appendLine("\n" + "-" * 65)
-      appendLine("\tTop 10 Incident Groups (Sex & Age)")
+      appendLine(s"\tTop ${ProcessData.ShowRank} Incident Groups (Sex & Age)")
       appendLine("-" * 65)
       appendLine()
       topGroups.zipWithIndex.foreach { case (((sex, ageBin), count, pct), index) =>
@@ -58,7 +65,7 @@ object DataReporter:
 
     def printTopProvincesDetails(topProvinces: Seq[(String, List[AccidentRecordWithCode])], totalOriginalRecords: Int): Unit =
       appendLine("\n" + "-" * 65)
-      appendLine("\tTop 10 Incident Provinces (Detailed View)")
+      appendLine(s"\tTop ${ProcessData.ShowRank} Incident Provinces (Detailed View)")
       appendLine("-" * 65)
       appendLine()
       topProvinces.zipWithIndex.foreach { case ((prov, provinceRecords), index) =>
@@ -86,7 +93,7 @@ object DataReporter:
 
     def printTopLocationsDetails(topLocations: Seq[((String, String), List[AccidentRecordWithCode])], totalOriginalRecords: Int): Unit =
       appendLine("-" * 65)
-      appendLine("\tTop 10 Incident Locations (Detailed View)")
+      appendLine(s"\tTop ${ProcessData.ShowRank} Incident Locations (Detailed View)")
       appendLine("-" * 65)
       appendLine()
       topLocations.zipWithIndex.foreach { case (((prov, dist), districtRecords), index) =>
@@ -111,11 +118,29 @@ object DataReporter:
         appendLine(s"\t${levelStrings.mkString(" | ")}")
         appendLine()
       }
+
+    def printTopMonths(topMonths: Seq[(Int, Int)], totalOriginalRecords: Int): Unit =
+      appendLine("-" * 65)
+      appendLine(s"\tTop ${ProcessData.ShowRank} Incident Months")
+      appendLine("-" * 65)
+      appendLine()
+      val monthNames = Map(
+        1 -> "มกราคม", 2 -> "กุมภาพันธ์", 3 -> "มีนาคม", 4 -> "เมษายน",
+        5 -> "พฤษภาคม", 6 -> "มิถุนายน", 7 -> "กรกฎาคม", 8 -> "สิงหาคม",
+        9 -> "กันยายน", 10 -> "ตุลาคม", 11 -> "พฤศจิกายน", 12 -> "ธันวาคม"
+      )
+      topMonths.zipWithIndex.foreach { case ((month, count), index) =>
+        val mName = monthNames.getOrElse(month, s"เดือนที่ $month")
+        val pct = (count.toDouble / totalOriginalRecords) * 100
+        appendLine(f"${index + 1}. $mName%-15s : $pct%5.2f%% ($count records)")
+      }
+      appendLine()
       appendLine("=" * 65)
 
     // build report
     printSummaryStats(
       result.total,
+      result.processedRows, // ---> โยนค่าที่เพิ่งเพิ่มเข้าไปให้ฟังก์ชัน <---
       result.avgAge,
       result.ageStdDev,
       result.ageBins,
@@ -125,5 +150,6 @@ object DataReporter:
     printTopSexAndAgeGroups(result.topSexAndAgeGroups)
     printTopProvincesDetails(result.topProvinces, result.total)
     printTopLocationsDetails(result.topLocations, result.total)
+    printTopMonths(result.topMonths, result.total)
 
     sb.toString

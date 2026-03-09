@@ -63,6 +63,7 @@ def executePipeline(mode: String): Either[String, ProcessData.AnalysisResult] =
     provinceMap <- LocationMapper.loadProvinceMapping("provinces.csv")
     districtMap <- LocationMapper.loadDistrictMapping("districts.csv")
     data        <- DataExtractor.extractAccidentData("Dataset-Mockup-byGemini.csv")
+    // data        <- DataExtractor.extractAccidentData("Dataset.csv")
     dataWithCodes =
       if mode == "parallel" then transformDataParallel(data, provinceMap, districtMap)
       else transformData(data, provinceMap, districtMap)
@@ -101,8 +102,14 @@ def buildRecord(rec: AccidentRecord, pMap: Map[String, String], dMap: Map[String
 
 // CSV helpers -----------------------------------------------------------
 def toCsvContent(data: Seq[AccidentRecordWithCode]): String =
-  val header = "Age,Sex,Home_Code,Incident_Code,Distance_Level"
-  val rows   = data.map(r => s"${r.age},${r.sex},${r.homeLoc.code},${r.incidentLoc.code},${r.distanceLevel}")
+  val header = "Age,Sex,Home_Code,Incident_Code,Distance_Level,day,month,year"
+  val rows = data.map { r =>
+    // แยกปี-เดือน-วัน จาก deadDate 
+    val parts = r.deadDate.trim.split("-")
+    val (year, month, day) = if (parts.length == 3) (parts(0), parts(1), parts(2)) else ("","","")
+    
+    s"${r.age},${r.sex},${r.homeLoc.code},${r.incidentLoc.code},${r.distanceLevel},$day,$month,$year"
+  }
   (header +: rows).mkString("\n")
 
 def writeStringToFile(path: String, content: String): Either[String, Unit] =
