@@ -2,36 +2,20 @@ import Models.AccidentRecordWithCode
 import ProcessData.{AnalysisResult, calculateStats} 
 
 object DataReporter:
-
-  /**
-   * Build a textual report from analysis result. Pure: no printing.
-   */
   def formatReport(result: AnalysisResult): String =
     val sb = new StringBuilder
 
     def appendLine(line: String = ""): Unit = sb.append(line).append("\n")
 
-    def printSummaryStats(
-      total: Int,
-      processed: Int, // ---> เพิ่ม parameter รับค่า processedRows
-      avgAge: Double,
-      ageStdDev: Double,
-      ageBins: Seq[(String, Int, Double)],
-      sexStats: Map[String, (Int, Double)],
-      distStats: Map[Int, (Int, Double)]
-    ): Unit =
-      val levelDesc = Map(
-        0 -> "จังหวัดและอำเภอเดียวกัน",
-        1 -> "จังหวัดเดียวกัน คนละอำเภอ",
-        2 -> "คนละอำเภอ และจังหวัด",
-        -1 -> "ข้อมูลไม่สอดคล้อง/อื่นๆ"
-      )
+    def printSummaryStats(total: Int,processed: Int, avgAge: Double, ageStdDev: Double,
+      ageBins: Seq[(String, Int, Double)], sexStats: Map[String, (Int, Double)], distStats: Map[Int, (Int, Double)]): Unit =
+      val levelDesc = Map(0 -> "จังหวัดและอำเภอเดียวกัน", 1 -> "จังหวัดเดียวกัน คนละอำเภอ", 
+        2 -> "คนละอำเภอ และจังหวัด",-1 -> "ข้อมูลไม่สอดคล้อง/อื่นๆ")
 
       appendLine("=" * 65)
       appendLine("\tSummary Statistics")
       appendLine("=" * 65)
       
-      // ---> เพิ่มการแสดงผลจำนวนแถวที่นี่ <---
       appendLine(f"Total Rows Received  : $total%,d records")
       appendLine(f"Total Rows Processed : $processed%,d records (Valid Data)")
       appendLine("-" * 65)
@@ -58,9 +42,7 @@ object DataReporter:
       appendLine("-" * 65)
       appendLine()
       topGroups.zipWithIndex.foreach { case (((sex, ageBin), count, pct), index) =>
-        appendLine(
-          f"${index + 1}%2d. เพศ: $sex%-8s | ช่วงอายุ: $ageBin%-5s ปี : $pct%5.2f%% ($count records)"
-        )
+        appendLine(f"${index + 1}%2d. เพศ: $sex%-8s | ช่วงอายุ: $ageBin%-5s ปี : $pct%5.2f%% ($count records)")
       }
 
     def printTopProvincesDetails(topProvinces: Seq[(String, List[AccidentRecordWithCode])], totalOriginalRecords: Int): Unit =
@@ -75,9 +57,13 @@ object DataReporter:
 
         val sexStats = calculateStats(provinceRecords, provTotal, "sequential")(_.sex)
         val sexStrings = sexStats.toSeq
-          .sortBy { case (_, (count, _)) => -count }
+          .sortBy { case (_, (count, _)) =>
+            -count
+          }
           .map { case (sex, (count, pct)) =>
-            val sName = if sex.trim.isEmpty then "Unknown" else sex
+            val sName = if sex.trim.isEmpty 
+            then "Unknown"
+            else sex
             f"sex $sName : $pct%.2f%% ($count)"
           }
         appendLine(s"\t${sexStrings.mkString(" | ")}")
@@ -137,16 +123,8 @@ object DataReporter:
       appendLine()
       appendLine("=" * 65)
 
-    // build report
-    printSummaryStats(
-      result.total,
-      result.processedRows, // ---> โยนค่าที่เพิ่งเพิ่มเข้าไปให้ฟังก์ชัน <---
-      result.avgAge,
-      result.ageStdDev,
-      result.ageBins,
-      result.sexStats,
-      result.distStats
-    )
+    printSummaryStats( result.total, result.processedRows, result.avgAge, result.ageStdDev,
+      result.ageBins, result.sexStats, result.distStats)
     printTopSexAndAgeGroups(result.topSexAndAgeGroups)
     printTopProvincesDetails(result.topProvinces, result.total)
     printTopLocationsDetails(result.topLocations, result.total)

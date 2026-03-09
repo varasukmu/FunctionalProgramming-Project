@@ -4,10 +4,6 @@ import scala.util.{Using, Try}
 import Models.{Location, AccidentRecord}
 
 object DataExtractor {
-  /**
-   * Pure parser: convert raw lines (including header) into records.
-   * No side effects – useful for testing and reasoning.
-   */
   def parseAccidentLines(allLines: List[String]): List[AccidentRecord] =
     allLines match
       case Nil => Nil
@@ -42,12 +38,9 @@ object DataExtractor {
           } yield AccidentRecord(age, sex, Location(d, p), date, Location(ad, ap))
         }
 
-  /**
-   * Side‑effecting entry point that reads a file and applies the pure parser.
-   * All I/O is contained here; callers receive a pure Either result.
-   */
   def extractAccidentData(fileName: String): Either[String, List[AccidentRecord]] =
     Using(Source.fromFile(fileName, "UTF-8")) { source =>
       parseAccidentLines(source.getLines().toList)
-    }.toEither.left.map(e => s"File error: ${e.getMessage}")
+    }
+    .toEither.left.map(e => s"File error: ${e.getMessage}")
 }
